@@ -5,12 +5,13 @@ Os testes de APIs com o Postman pode ser uma alternativa eficiente para automaç
 
 ![jenkins](./gif/record.gif)
 
-### Depedências  
+### Dependências  
 
 * [Postman](https://www.postman.com/downloads/ "Postman")  
 * [Node](https://nodejs.org/en/ "Node")  
 
-__Instalar Newman e Reports:__
+__Instalar Newman e Reports:__  
+obs: com os reports, os relatórios são fornecidos em html no diretório do projeto.
 
 * `npm install -g newman`  
 * `npm i -g newman-reporter-htmlextra`  
