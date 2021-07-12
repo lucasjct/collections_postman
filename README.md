@@ -1,21 +1,26 @@
 
 # Postman com Newman  
 
-Os testes de Apis com o Postman pode ser uma alternativa eficiente para automatizar testes de API. Com os recursos do Postaman podemos rodar testes através da linha de comando, o que permite integrá-lo CI e automatizar o ferrramentas de automação como Jenkins.
+Os testes de APIs com o Postman pode ser uma alternativa eficiente para automação. Com os recursos do Postman podemos executar testes através da linha de comando, o que permite integrá-lo com ferramentas de CI e automatizar com ferrramentas como Jenkins.  
 
+![jenkins](./gif/record.gif)
 
-* __Newman com HTML Reporter__  
+### Depedências  
 
-`newman run -d data/data.csv postman_collection.json -e dev_environment.json --folder Leads -r html`   
+* [Postman](https://www.postman.com/downloads/ "Postman")  
+* [Node](https://nodejs.org/en/ "Node")  
 
-* __Newman com HTML Extra__  
+__Instalar Newman e Reports:__
+
+* `npm install -g newman`  
+* `npm i -g newman-reporter-htmlextra`  
+* `npm i -g newman-reporter-html`
+
+### Executar o Projeto
+ __Newman com HTML Reporter__  
+
+* `newman run -d data/data.csv postman_collection.json -e dev_environment.json --folder Leads -r html`   
+
+ __Newman com HTML Extra__  
 
 * `newman run -d data/data.csv postman_collection.json -e dev_environment.json --folder Leads -r htmlextra`
-
-Postman APIKey:  
-
-__Colections:__   
-https://api.getpostman.com/collections?apikey=PMAK-609ed2c9334b1000588f1fe0-642bffd52c99c15a3be737e8af26bc6d4c  
-
-__Ambientes:__   
-https://api.getpostman.com/environments?apikey=PMAK-609ed2c9334b1000588f1fe0-642bffd52c99c15a3be737e8af26bc6d4c  
