@@ -1,0 +1,589 @@
+{
+	"info": {
+		"_postman_id": "ec361b1f-2db3-46f5-bcb6-fcdc313fbc32",
+		"name": "Hunter API",
+		"description": "Hunter API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Leads",
+			"item": [
+				{
+					"name": "Criar Leads",
+					"item": [
+						{
+							"name": "Criar Leads",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.iterationData.get(\"email_lead\")",
+											"pm.iterationData.get(\"first_name_lead\")",
+											"pm.iterationData.get(\"last_name_lead\")",
+											"pm.iterationData.get(\"position_lead\")",
+											"pm.iterationData.get(\"company_lead\")",
+											"pm.iterationData.get(\"company_industry_lead\")"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"id\", jsonData.data.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"{{email_lead}}\",\n  \"first_name\": \"{{first_name_lead}}\",\n  \"last_name\": \"{{last_name_lead}}\",\n  \"position\": \"{{position_lead}}\",\n  \"company\": \"{{company_lead}}\",\n  \"company_industry\": \"{{company_industry_lead}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/leads?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Criar Leads"
+							},
+							"response": []
+						}
+					],
+					"description": "Criar Leads"
+				},
+				{
+					"name": "Alterar Leads",
+					"item": [
+						{
+							"name": "Alterar Leads",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.iterationData.get(\"email_lead\")",
+											"pm.iterationData.get(\"first_name_lead\")",
+											"pm.iterationData.get(\"last_name_lead\")",
+											"pm.iterationData.get(\"position_lead\")",
+											"pm.iterationData.get(\"company_lead\")",
+											"pm.iterationData.get(\"company_industry_lead\")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"{{email_lead}}\",\n  \"first_name\": \"{{first_name_lead}}\",\n  \"last_name\": \"{{last_name_lead}}\",\n  \"position\": \"{{position_lead}}\",\n  \"company\": \"{{company_lead}}\",\n  \"company_industry\": \"{{company_industry_lead}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/leads/{{id}}?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads",
+										"{{id}}"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Alterar Leads"
+							},
+							"response": []
+						}
+					],
+					"description": "Alterar Leads"
+				},
+				{
+					"name": "Buscar Leads",
+					"item": [
+						{
+							"name": "Buscar Lista de Leads",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/leads?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Buscar Lista de Leads"
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Leads Específico",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/leads/{{id}}?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads",
+										"{{id}}"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Buscar Leads Específico"
+							},
+							"response": []
+						}
+					],
+					"description": "Buscar Leads"
+				},
+				{
+					"name": "Deletar Leads",
+					"item": [
+						{
+							"name": "Deletar Leads",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/leads/{{id}}?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads",
+										"{{id}}"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Deletar Leads"
+							},
+							"response": []
+						}
+					],
+					"description": "Deletar Leads"
+				}
+			],
+			"description": "Requisições para Leads"
+		},
+		{
+			"name": "Lista_Leads",
+			"item": [
+				{
+					"name": "Criar Lista de Leads",
+					"item": [
+						{
+							"name": "Criar Lista de Leads",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.iterationData.get(\"title_name\")",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"id_list\", jsonData.data.list_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"{{title_name}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/leads_lists?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads_lists"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Criar Lista de Leads"
+							},
+							"response": []
+						}
+					],
+					"description": "Criar Lista de Leads",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Alterar Lista de Leads",
+					"item": [
+						{
+							"name": "Alterar listas de Leads",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.iterationData.get(\"title_name\")",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"{{title_name}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/leads_lists/{{id_list}}?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{id_list}}"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Alterar listas de Leads"
+							},
+							"response": []
+						}
+					],
+					"description": "Alterar Lista de Leads"
+				},
+				{
+					"name": "Buscar Lista de Leads",
+					"item": [
+						{
+							"name": "Buscar Lista Leads",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/leads_lists?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads_lists"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Buscar Leads"
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar lista específica",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/leads_lists/{{id_list}}?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{id_list}}"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Buscar Lista específica"
+							},
+							"response": []
+						}
+					],
+					"description": "Buscar Lista de Leads"
+				},
+				{
+					"name": "Deletar Lista de Leads",
+					"item": [
+						{
+							"name": "Deletar Lists Leads ",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/leads_lists/{{id_list}}?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads_lists",
+										"{{id_list}}"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Deletar List Leads"
+							},
+							"response": []
+						}
+					],
+					"description": "Deletar Lista de Leads"
+				}
+			],
+			"description": "Requisições para lista de leads"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log(pm.info.requestName)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"if(pm.request.method == \"GET\"){",
+					"    pm.test(\"Status code is 200\", function () {",
+					"        pm.response.to.have.status(200);",
+					"    });",
+					"    pm.test(\"Response time is less than 200ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});",
+					"}",
+					"",
+					"if(pm.request.method == \"DELETE\" || pm.request.method == \"PUT\"){",
+					"    pm.test(\"Status code is 204\", function () {",
+					"        pm.response.to.have.status(204);",
+					"    });",
+					"    pm.test(\"Status code name has string\", function () {",
+					"        pm.response.to.have.status(\"No Content\");",
+					"    });",
+					"}",
+					"if(pm.request.method == 'POST'){",
+					"        pm.test(\"Successful POST request\", function () {",
+					"        pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);",
+					"    });",
+					"        pm.test(\"Status code name has string\", function () {",
+					"        pm.response.to.have.status(\"Created\");",
+					"    });",
+					"        pm.test(\"Response time is less than 200ms\", function () {",
+					"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"    ",
+					"    });",
+					"    ",
+					"}",
+					"",
+					"",
+					"",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_key",
+			"value": "api_key=37063d259475ce7ed1ede82d7f8833accda7c67c"
+		},
+		{
+			"key": "listar_leads",
+			"value": "leads"
+		},
+		{
+			"key": "lead_id",
+			"value": "78111201"
+		},
+		{
+			"key": "id_list",
+			"value": "2928543"
+		},
+		{
+			"key": "list",
+			"value": "list"
+		},
+		{
+			"key": "id_list_leads",
+			"value": "2929897"
+		}
+	]
+}
