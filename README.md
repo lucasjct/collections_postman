@@ -1,9 +1,14 @@
 
-#### Newman com HTML Reporter  
+# Postman com Newman  
 
-* `newman run -d data/data.csv postman_collection.json -e dev_environment.json --folder Leads -r html`   
+Os testes de Apis com o Postman pode ser uma alternativa eficiente para automatizar testes de API. Com os recursos do Postaman podemos rodar testes através da linha de comando, o que permite integrá-lo CI e automatizar o ferrramentas de automação como Jenkins.
 
-#### Newman com HTML Extra  
+
+* __Newman com HTML Reporter__  
+
+`newman run -d data/data.csv postman_collection.json -e dev_environment.json --folder Leads -r html`   
+
+* __Newman com HTML Extra__  
 
 * `newman run -d data/data.csv postman_collection.json -e dev_environment.json --folder Leads -r htmlextra`
 
