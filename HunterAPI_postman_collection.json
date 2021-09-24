@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ec361b1f-2db3-46f5-bcb6-fcdc313fbc32",
+		"_postman_id": "8aec1011-c220-4e91-82fc-74e2ffdeeb1b",
 		"name": "Hunter API",
 		"description": "Hunter API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -24,7 +24,12 @@
 											"pm.iterationData.get(\"last_name_lead\")",
 											"pm.iterationData.get(\"position_lead\")",
 											"pm.iterationData.get(\"company_lead\")",
-											"pm.iterationData.get(\"company_industry_lead\")"
+											"pm.iterationData.get(\"company_industry_lead\")",
+											"",
+											"",
+											"pm.variables.replaceIn('{{$randomMail}}')",
+											"pm.variables.replaceIn('{{$randomFirstName}}')",
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -45,7 +50,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"email\": \"{{email_lead}}\",\n  \"first_name\": \"{{first_name_lead}}\",\n  \"last_name\": \"{{last_name_lead}}\",\n  \"position\": \"{{position_lead}}\",\n  \"company\": \"{{company_lead}}\",\n  \"company_industry\": \"{{company_industry_lead}}\"\n}",
+									"raw": "// Monitor não aceita entrada de dados externos\n\n/*{\n  \"email\": \"{{email_lead}}\",\n  \"first_name\": \"{{first_name_lead}}\",\n  \"last_name\": \"{{last_name_lead}}\",\n  \"position\": \"{{position_lead}}\",\n  \"company\": \"{{company_lead}}\",\n  \"company_industry\": \"{{company_industry_lead}}\"\n}*/\n\n\n{\n  \"email\": \"{{$randomEmail}}\",\n  \"first_name\": \"{{$randomFirstName}}\",\n  \"last_name\": \"API-TEST2ING1To\",\n  \"position\": \"Quality Assurance\",\n  \"company\": \"Testing Force\",\n  \"company_industry\": \"Same company\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -73,62 +78,6 @@
 						}
 					],
 					"description": "Criar Leads"
-				},
-				{
-					"name": "Alterar Leads",
-					"item": [
-						{
-							"name": "Alterar Leads",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.iterationData.get(\"email_lead\")",
-											"pm.iterationData.get(\"first_name_lead\")",
-											"pm.iterationData.get(\"last_name_lead\")",
-											"pm.iterationData.get(\"position_lead\")",
-											"pm.iterationData.get(\"company_lead\")",
-											"pm.iterationData.get(\"company_industry_lead\")"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"email\": \"{{email_lead}}\",\n  \"first_name\": \"{{first_name_lead}}\",\n  \"last_name\": \"{{last_name_lead}}\",\n  \"position\": \"{{position_lead}}\",\n  \"company\": \"{{company_lead}}\",\n  \"company_industry\": \"{{company_industry_lead}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url_base}}/leads/{{id}}?{{api_key}}",
-									"host": [
-										"{{url_base}}"
-									],
-									"path": [
-										"leads",
-										"{{id}}"
-									],
-									"query": [
-										{
-											"key": "{{api_key}}",
-											"value": null
-										}
-									]
-								},
-								"description": "Alterar Leads"
-							},
-							"response": []
-						}
-					],
-					"description": "Alterar Leads"
 				},
 				{
 					"name": "Buscar Leads",
@@ -217,6 +166,62 @@
 					"description": "Buscar Leads"
 				},
 				{
+					"name": "Alterar Leads",
+					"item": [
+						{
+							"name": "Alterar Leads",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.iterationData.get(\"email_lead\")",
+											"pm.iterationData.get(\"first_name_lead\")",
+											"pm.iterationData.get(\"last_name_lead\")",
+											"pm.iterationData.get(\"position_lead\")",
+											"pm.iterationData.get(\"company_lead\")",
+											"pm.iterationData.get(\"company_industry_lead\")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "/*{\n  \"email\": \"{{email_lead}}\",\n  \"first_name\": \"{{first_name_lead}}\",\n  \"last_name\": \"{{last_name_lead}}\",\n  \"position\": \"{{position_lead}}\",\n  \"company\": \"{{company_lead}}\",\n  \"company_industry\": \"{{company_industry_lead}}\"\n}*/\n\n{\n  \"email\": \"testeAPI@gmail.com\",\n  \"first_name\": \"testeAPI\",\n  \"last_name\": \"API-TESTING\",\n  \"position\": \"Quality Assurance Editado\",\n  \"company\": \"Testing Force\",\n  \"company_industry\": \"Same company\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/leads/{{id}}?{{api_key}}",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"leads",
+										"{{id}}"
+									],
+									"query": [
+										{
+											"key": "{{api_key}}",
+											"value": null
+										}
+									]
+								},
+								"description": "Alterar Leads"
+							},
+							"response": []
+						}
+					],
+					"description": "Alterar Leads"
+				},
+				{
 					"name": "Deletar Leads",
 					"item": [
 						{
@@ -274,7 +279,9 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
+											"pm.variables.replaceIn('{{$randomFirstName}}')",
 											"pm.iterationData.get(\"title_name\")",
+											"",
 											""
 										],
 										"type": "text/javascript"
@@ -296,7 +303,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"{{title_name}}\"\n}",
+									"raw": "// Monitor não aceita entrada de dados externos\n\n\n/*{\n  \"name\": \"{{title_name}}\"\n}*/\n\n{\n  \"name\": \"{{$randomFirstName}}\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -367,7 +374,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"{{title_name}}\"\n}",
+									"raw": "{\n  \"name\": \"Lista Lead Lucas Editada\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -584,6 +591,10 @@
 		{
 			"key": "id_list_leads",
 			"value": "2929897"
+		},
+		{
+			"key": "email_test",
+			"value": ""
 		}
 	]
 }
